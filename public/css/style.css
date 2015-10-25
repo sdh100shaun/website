@@ -4,15 +4,23 @@ body {
     width: 100%;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: center;
-    color: #aaa;
+    color: #fff;
     font-size: 18px;
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top, #ffffff 52%, #ffffff 52%, #719e40 52%, #719e40 54%, #719e40 54%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(52%,#ffffff), color-stop(52%,#ffffff), color-stop(52%,#719e40), color-stop(54%,#719e40), color-stop(54%,#719e40)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #ffffff 52%,#ffffff 52%,#719e40 52%,#719e40 54%,#719e40 54%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #ffffff 52%,#ffffff 52%,#719e40 52%,#719e40 54%,#719e40 54%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #ffffff 52%,#ffffff 52%,#719e40 52%,#719e40 54%,#719e40 54%); /* IE10+ */
+    background: linear-gradient(to bottom, #ffffff 52%,#ffffff 52%,#719e40 52%,#719e40 54%,#719e40 54%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#719e40',GradientType=0 );
 }
 
 h1 {
     color: #719e40;
     letter-spacing: -3px;
     font-family: 'Lato', sans-serif;
-    font-size: 100px;
+    font-size: 300px;
     font-weight: 200;
     margin-bottom: 0;
     text-indent: -9000em;
@@ -20,5 +28,30 @@ h1 {
 }
 
 .event a {
-
+    text-decoration: none;
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 14px 26px;
+    font-size: 2em;
+    line-height: 100%;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    display:inline-block;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.1s ease-in-out;
+    -webkit-transition: background 0.1s ease-in-out;
+    -moz-transition: background 0.1s ease-in-out;
+    -ms-transition: background 0.1s ease-in-out;
+    -o-transition: background 0.1s ease-in-out;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    background-color: #2ecc71;
+    box-shadow: 0px 3px 0px 0px #239a55;
 }
