@@ -4,7 +4,7 @@ body {
     width: 100%;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: center;
-    color: #fff;
+    color: #000;
     font-size: 18px;
     background: #ffffff; /* Old browsers */
     background: -moz-linear-gradient(top, #ffffff 52%, #ffffff 52%, #719e40 52%, #719e40 54%, #719e40 54%); /* FF3.6+ */
@@ -47,7 +47,6 @@ h1 {
     -ms-transition: background 0.1s ease-in-out;
     -o-transition: background 0.1s ease-in-out;
     text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-    color: #fff;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
