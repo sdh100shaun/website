@@ -231,6 +231,7 @@ $injector->add('PHPMinds\Action\AdminDashboardAction');
 $injector->add('PHPMinds\Action\EventDetailsAction');
 $injector->add('PHPMinds\Action\CreateSpeakerAction');
 $injector->add('PHPMinds\Action\CreateEventAction');
+$injector->add('PHPMinds\Action\UpdateEventAction');
 $injector->add('PHPMinds\Action\CallbackAction');
 $injector->add('PHPMinds\Action\EventStatusAction');
 $injector->add('PHPMinds\Action\PastEventsAction');

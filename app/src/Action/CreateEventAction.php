@@ -167,6 +167,7 @@ final class CreateEventAction
 
     }
 
+
     protected function getCsrfValues(Request $request)
     {
         $nameKey = $this->csrf->getTokenNameKey();

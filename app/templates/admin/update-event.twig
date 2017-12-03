@@ -1,0 +1,42 @@
+{% extends "logged-base.twig" %}
+
+{% block title %}Event Details{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="large-offset-1 large-10 small-12 columns">
+            <h3>Event Details to be updated. </h3>
+            <p class="pull-right">
+            <form method="post">
+                <button type="submit">Update now.</button>
+            </form>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-offset-1 large-10 small-12 columns h-event">
+            <p>  {{ event.getDateTimeAsString }} </p>
+            <h3 class="p-name"> {{ event.getTalk().getTitle() }} </h3>
+
+
+            <div class="p-summary">
+                <p>{{ event.getTalk().getDescription() | raw }} <!--|length > 450 ? event.description|raw| slice(0, 450) ~ '...[read more]' : event.description|raw }}
+                    --></p>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block right_column %}
+
+{% endblock %}
+
+{% block scripts %}
+    <script nonce="{{ nonce }}">
+        $(document).ready(function () {
+
+        });
+    </script>
+{% endblock %}

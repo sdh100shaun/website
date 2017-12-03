@@ -39,6 +39,12 @@ $app->group('', function(){
     $this->post('/create-event/[{meetup_id}]', 'PHPMinds\Action\CreateEventAction:dispatch')
         ->setName('create-event-post');
 
+    $this->post('/update-event/[{meetup_id}]', 'PHPMinds\Action\UpdateEventAction:dispatch')
+        ->setName('update-event-post');
+
+    $this->get('/update-event/[{meetup_id}]', 'PHPMinds\Action\UpdateEventAction:dispatch')
+        ->setName('update-event-get');
+
     $this->post('/create-speaker', 'PHPMinds\Action\CreateSpeakerAction:dispatch')
         ->setName('create-speaker');
 
