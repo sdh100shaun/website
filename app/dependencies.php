@@ -40,10 +40,12 @@ $container['meetup.config'] = function ($c) {
     $meetup = $c->get('settings')['meetups'];
 
     return new PHPMinds\Config\MeetupConfig([
-        'apiKey'        => $meetup['apiKey'],
-        'baseUrl'       => $meetup['baseUrl'],
-        'groupUrlName'  => $meetup['PHPMinds']['group_urlname'],
+        'consumer_key' => $meetup['consumer_key'],
+        'consumer_secret' => $meetup['consumer_secret'],
+        'baseUrl' => $meetup['baseUrl'],
+        'groupUrlName' => $meetup['PHPMinds']['group_urlname'],
         'publishStatus' => $meetup['publish_status']
+
     ]);
 
 };
@@ -52,11 +54,11 @@ $container['joindin.config'] = function ($c) {
     $joindin = $c->get('settings')['joindin'];
 
     return new PHPMinds\Config\JoindinConfig([
-        'apiKey'            => $joindin['key'],
-        'baseUrl'           => $joindin['baseUrl'],
-        'frontendBaseUrl'   => $joindin['frontendBaseUrl'],
-        'callback'          => $joindin['callback'],
-        'username'          => $joindin['username']
+        'apiKey' => $joindin['key'],
+        'baseUrl' => $joindin['baseUrl'],
+        'frontendBaseUrl' => $joindin['frontendBaseUrl'],
+        'callback' => $joindin['callback'],
+        'username' => $joindin['username']
     ]);
 };
 
@@ -72,8 +74,7 @@ $container['joindin.event'] = function ($c) {
 };
 
 
-$container['parsedown'] = function($c)
-{
+$container['parsedown'] = function ($c) {
     return new Parsedown();
 };
 
@@ -82,17 +83,23 @@ $container['service.joindin'] = function ($c) {
 };
 
 $container['service.meetup'] = function ($c) {
-    
+
     $options = array('path' => __DIR__ . '/../cache/');
     $driver = new FileSystem($options);
-    $client = new MeetupCache( \DMS\Service\Meetup\MeetupKeyAuthClient::factory(
-        [
-            'key' => $c->get('meetup.config')->apiKey,
-            'base_url' => $c->get('meetup.config')->baseUrl,
-            'group_urlname' => $c->get('meetup.config')->groupUrlName,
-            'publish_status' => $c->get('meetup.config')->publishStatus
-        ]
-    ), new \Stash\Pool($driver));
+
+    $meetupClient = \DMS\Service\Meetup\MeetupOAuthClient::factory([
+        'consumer_key' => $c->get('meetup.config')->consumer_key,
+        'consumer_secret' => $c->get('meetup.config')->consumer_secret,
+        'base_url' => $c->get('meetup.config')->baseUrl,
+        'group_urlname' => $c->get('meetup.config')->groupUrlName,
+        'publish_status' => $c->get('meetup.config')->publishStatus
+    ]);
+
+
+    $client = new MeetupCache(
+        $meetupClient,
+        new \Stash\Pool($driver));
+
     return new \PHPMinds\Service\MeetupService(
         $client,
         $c->get('meetup.event'),
@@ -103,7 +110,7 @@ $container['service.meetup'] = function ($c) {
 
 $container['PHPMinds\Service\ContentService'] = function ($c) {
     $content = $c->get('settings')['content-folder'];
-    return new \PHPMinds\Service\ContentService($c->get('parsedown'),$content['location']);
+    return new \PHPMinds\Service\ContentService($c->get('parsedown'), $content['location']);
 };
 
 $container['PHPMinds\Service\EventsService'] = function ($c) {
@@ -188,7 +195,7 @@ $container['Slim\Views\Twig'] = function ($c) {
     return $view;
 };
 
-$container['global.nonce'] = function($c) {
+$container['global.nonce'] = function ($c) {
     return (new \Monolog\Processor\UidProcessor())->getUid();
 };
 
@@ -219,8 +226,6 @@ $container['Psr\Log\LoggerInterface'] = function ($c) {
 // -----------------------------------------------------------------------------
 // Action factories
 // -----------------------------------------------------------------------------
-
-
 
 
 $injector->add('PHPMinds\Action\NotFoundAction');

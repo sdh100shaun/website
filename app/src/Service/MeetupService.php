@@ -13,7 +13,7 @@ class MeetupService
 {
 
     /**
-     * @var MeetupKeyAuthClient
+     * @var MeetupCache
      */
     protected $client;
 
@@ -105,6 +105,15 @@ class MeetupService
 
         return $pastEvents;
     }
+
+    /**
+     * @return void
+     */
+    public function clearEventCache():void
+    {
+        $this->client->expireCache();
+    }
+
     /**
      * @param EventModel $event
      * @return \Psr\Http\Message\ResponseInterface

@@ -57,7 +57,10 @@ final class HomeAction
 
             $response = $this->cache->withETag($response, $event->getMeetupID());
         } catch (\Exception $e) {
+            exit(var_dump($e));
+            $this->eventService->clearEventCache();
             $eventExists = false;
+
         }
 
         $filter = $this->contentService->getTwigFilter();

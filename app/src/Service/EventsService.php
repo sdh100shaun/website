@@ -53,6 +53,11 @@ class EventsService
         return $this->meetupService->getMeetupEvent();
     }
 
+    public function clearEventCache()
+    {
+        return $this->meetupService->clearEventCache();
+    }
+
     /**
      * @return \PHPMinds\Model\Event\EventModel
      */
